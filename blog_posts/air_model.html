@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- metas -->
+    <meta charset="utf-8">
+    <meta name="author" content="themepaa">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Krozo - Portfolio Template">
+    <meta name="description" content="Krozo - Portfolio Template">
+    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
+    <!--Feel free to add more CSS files as needed-->
+    <script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <!-- title -->
+    <title>Building a nonstop flight prediction model</title>
+    <!-- Favicon -->
+    <!-- plugin CSS -->
+    <!-- theme css -->
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<!-- Body Start -->
+
+<body data-spy="scroll" data-target="#navbar-collapse-toggle" data-offset="70">
+    <!-- page loading -->
+    <div id="loading">
+        <div class="load-circle"><span class="one"></span></div>
+    </div>
+    <!-- End -->
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar header-nav header-white header-transparent navbar-expand-lg">
+            <div class="container">
+                <!-- Brand -->
+                <a class="navbar-brand" href="/index.html">Joshua Neronha<span></span></a>
+                <!-- / -->
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-toggle" aria-controls="navbar-collapse-toggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <!-- / -->
+                <!-- Top Menu -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbar-collapse-toggle">
+                    <ul class="navbar-nav ml-auto">
+                        <li><a class="nav-link" href="/index.html#home"><span>Home</span></a></li>
+                        <li><a class="nav-link" href="/index.html#about"><span>About Me</span></a></li>
+                        <li><a class="nav-link" href="/index.html#work"><span>Projects</span></a></li>
+                        <li><a class="nav-link" href="/blog.html"><span>Blog</span></a></li>
+                        <li><a class="nav-link" href="/index.html#contactus"><span>Contact</span></a></li>
+                    </ul>
+                </div>
+                <!-- / -->
+            </div><!-- Container -->
+        </nav> <!-- Navbar -->
+    </header>
+    <!-- End Header -->
+    <main id="blog">
+        <!-- Home Banner -->
+        <section class="page-title bg-gray-1" style="background-image: url(/static/img/bg-1.jpeg);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 white-color text-center">
+                        <h1>Blog</h1>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Home Banner -->
+        <!-- Blog List -->
+        <div class="blog-listing">
+            <div class="container">
+                <div class="row align-items-start">
+                    <div class="col-lg-12 my-3">
+                        <article class="article">
+                            <!-- <div class="article-img">
+                                <img src="/static/img/bg-1.jpeg" title="" alt="">
+                            </div> -->
+                            <div class="article-title">
+                                <h2>Building a nonstop flight prediction model</h2>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <label>Joshua Neronha</label>
+                                        <span>21 APR 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <p>Over the past few weeks, I've been working on one of my most ambitious projects to date: buillding a 
+                                    model that predicts how many people might fly on any given nonstop route and then visualizing it in an
+                                    interesting way. I took a course on data science this past semester where I learned quite a bit about
+                                    statistics, machine learning, and data visualization, so I figured this would be a great opportunity
+                                    to apply my skills to a topic I find very interesting.</p>
+                                <p>Below is an <strong>interactive</strong> visualization showing the model results (it works on mobile devices too, although you may need to scroll.) It's presented as a map with the 280 largest
+                                    U.S. airports -- you can click on any two airports and the info box at right will present the actual
+                                    number of nonstop passengers per day each way (PDEW) in Q3 2019, the total number of passengers (with
+                                    any number of stops), and the predicted number of nonstop PDEW based on the model. The model,
+                                    of course, is intended to  be used with nonstop routes that don't currently exist, but you can still
+                                    look at existing nonstop routes too for purposes of comparison!</p>
+                                <p>After presenting the visualization, I'm going to briefly discuss my methodology after the break but go play with the model first!
+                                    You can choose as many city pairs as you want -- once you're done looking at one route, just click on another two cities. And as a forewarning, it's definitely not perfect!</p>
+                                <div id="map" style="overflow-x:scroll"></div>
+                                <p>Now that you've had a chance to play around for a bit, on to the methodology! You can look at the Jupyter notebook in which
+                                    I built the model <a href = "https://github.com/joshuaneronha/nonstop-flight-model/blob/main/Model.ipynb"> here. </a>My basic plan was to use the same
+                                    Department of Transportation DB1B data I've used in a few posts now to build a model for how many passengers might
+                                    be expected to fly on any nonstop route (airline excluded) based on a factors such as the distance of a route,
+                                    total passengers at the origin and destination airports, etc. </p>
+                                <p>Using DB1B data from Q3 2019, my first step was to calculate five main metrics for the top ~280 U.S. commercial airports: average market
+                                    coupons (number of stops), average flight distance in miles, average flight price in dollars, total passengers
+                                    in the quarter, and the population of the surrounding metropolitan area. Then, for each existing nonstop flight, I found the total
+                                    number of passengers in that quarter and combined this data with the airport information for both origin and destination airports in
+                                    a single dataframe that contained all the information about each route and its airports.</p>
+                                <p>With the data gathered, the next step was to perform a regression to predict the number of passengers on a new
+                                    nonstop route given information about the route and origin/destination airports. I excluded any flights with greater
+                                    than 350,000 passengers in the quarter (of which there are only a few) as they are huge outliers and could skew the model.
+                                    I first attempted a linear regression, but the issue was that flights that would likely have extremely low passenger counts
+                                    would predict a negative number of passengers. This is just an inherent issue with linear regression, so I explored a few other
+                                    types of regression including logistic and exponential before landing on a Poisson distribution that considers event probability
+                                    (which fits the idea of number of passengers flying) and critically excludes negative values. The regression table is shown below:</p>
+
+                    <!-- <center> -->
+                        <pre>                                           Generalized Linear Model Regression Results                  
+                        ==============================================================================
+                        Dep. Variable:       PASSENGERS_route   No. Observations:                 3058
+                        Model:                            GLM   Df Residuals:                     3048
+                        Model Family:                 Poisson   Df Model:                            9
+                        Link Function:                    log   Scale:                          1.0000
+                        Method:                          IRLS   Log-Likelihood:            -1.4802e+06
+                        Date:                Tue, 20 Apr 2021   Deviance:                   2.9321e+06
+                        Time:                        21:29:21   Pearson chi2:                 3.25e+06
+                        No. Iterations:                     5                                         
+                        Covariance Type:            nonrobust                                         
+                        ==========================================================================================
+                                                        coef    std err          z      P&gt;|z|      [0.025      0.975]
+                        ------------------------------------------------------------------------------------------
+                        const                     11.7094      0.006   1930.331      0.000      11.697      11.721
+                        market_distance_route     -0.0004   5.52e-07   -787.274      0.000      -0.000      -0.000
+                        market_fare_origin        -0.0007    1.4e-05    -52.244      0.000      -0.001      -0.001
+                        market_coupons_origin     -2.3898      0.003   -689.831      0.000      -2.397      -2.383
+                        market_distance_origin     0.0008   1.73e-06    461.121      0.000       0.001       0.001
+                        PASSENGERS_origin       2.342e-06   2.63e-09    889.163      0.000    2.34e-06    2.35e-06
+                        market_fare_dest          -0.0008    1.4e-05    -54.667      0.000      -0.001      -0.001
+                        market_coupons_dest       -2.3892      0.003   -688.984      0.000      -2.396      -2.382
+                        market_distance_dest       0.0007   1.72e-06    434.013      0.000       0.001       0.001
+                        PASSENGERS_dest         2.406e-06   2.66e-09    902.920      0.000     2.4e-06    2.41e-06
+                        ==========================================================================================
+                        </pre>
+                                <p>The 9 variables considered in the regression -- 1 about the route, and 4 each
+                                    about the destination and origin airport -- all have p-values of zero, indicating
+                                    statistical signifigance. Similarly, splitting the dataset up into train/test sets and calculating
+                                    the mean-square error shows that the model performs quite similarly on both datasets,
+                                    indicating that this regression is at least relatively consistent.
+                                </p>
+                                <p>The last step of the data analysis was just calculating the predicted number of passengers
+                                    using this regression for any given route, and then I got started on the visualization. I
+                                    used D3.js, an incredibly customizable visualizations package that let me make this really cool
+                                    map, complete with clicking and choosing the airports of interests and drawing paths, which was
+                                    definitely one of my favorite parts of this project!
+                                </p>
+                                <p>While you've probably seen that the model makes pretty decent predictions in many cases, it's not hard 
+                                    to find routes where the model makes no sense! PVD-BOS, for example, predicts
+                                    318 PDEW which is obviously nuts, but because there are few routes so short and generally
+                                    longer routes have fewer passengers, this is an unfortunate byproduct of regression. Similarly,
+                                    the model is unable to account for qualitative observations about why people might travel between two cities.
+                                    Many flights to Florida, for example, are likely underestimated because it's hard to tell a model that Florida
+                                    has lots of beaches. And high-volume routes like JFK-LAX or BOS-SFO (more than 1000 PDEW or so) are usually 
+                                    underestimated by the model since there are so few very high-volume flights like these incorporated into the regression.
+                                    And while some estimates look pretty reasonable, some random routes just aren't even close! Predicting air travel demand isn't easy, and capturing it in a simple regression isn't likely to be easy either. I definitely don't think this is the most
+                                    possible accurate model, but it's a good start that generally provides decent estimates and was certainly fun to build.
+                                </p>
+                                <p>While the model obviously isn't perfect, I'm pretty proud of its relative accuracy given the pretty small account of
+                                    information taken into account using entirely public data. Overall, this has been a pretty fun project over the past few weeks 
+                                    exploring airline data, working with statistics and ML techniques, and making fun visualizations! As always, shoot me an email if you have any
+                                    thoughts on my work -- I always love to hear it!
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Blog List -->
+    </main>
+    <!-- Footer -->
+    <footer class="footer white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 my-2">
+                    <div class="nav justify-content-center justify-content-md-start">
+                        <a href="https://github.com/joshuaneronha"><i class="ti-github"></i></a>
+                        <a href="https://www.linkedin.com/in/joshuaneronha/"><i class="ti-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 my-2 text-center text-md-right">
+                    <p>Copyright 2021 Joshua Neronha. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
+    <script src="/static/plugin/appear/jquery.appear.js"></script>
+    <script src="/static/plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script type="text/javascript" src="/resources/air_predict.js"></script>
+</body>
+<!-- Body End -->
+
+</html>

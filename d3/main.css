@@ -1,0 +1,45 @@
+.header {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.header > h3, h5 {
+    margin: 0;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.countries {
+    fill: rgb(223, 221, 221);
+    /* stroke: #000 */
+
+}
+
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    width: 52.5%;
+    margin-left: 250px;
+}
+
+.tooltip {
+    position: absolute;
+    font-size: 13px;
+    min-width: 100px;
+    padding: 10px;
+    width:  auto;
+    height: auto;
+    background: #ffffff;
+    stroke: black;
+    stroke-width: 5px;
+
+}
+
+#slider_line {display:inline-block;margin-right:140px;margin-left:250px}
+
+
+
+/* Include any custom CSS styling here! */

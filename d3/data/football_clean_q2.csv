@@ -1,0 +1,208 @@
+home_team,country_code,win_percent
+Jersey,JEY,67.1
+Brazil,BRA,63.7
+Spain,ESP,58.5
+Germany,DEU,58.5
+Iran,IRN,54.5
+Czech Republic,CZE,53.9
+Argentina,ARG,53.7
+Croatia,HRV,53.5
+Italy,ITA,52.9
+New Caledonia,NCL,52.9
+South Korea,KOR,52.7
+Russia,RUS,51.3
+Netherlands,NLD,50.8
+Mexico,MEX,50.5
+Ivory Coast,CIV,49.7
+Australia,AUS,49.7
+France,FRA,49.6
+Sweden,SWE,49.1
+Egypt,EGY,48.9
+Portugal,PRT,48.3
+Japan,JPN,48.2
+China PR,CHN,48.2
+Guernsey,GGY,48.1
+Saudi Arabia,SAU,47.8
+Ghana,GHA,47.7
+Hungary,HUN,46.8
+Nigeria,NGA,46.4
+Morocco,MAR,46.2
+Ukraine,UKR,46.1
+Iraq,IRQ,45.9
+Martinique,MTQ,45.7
+Zambia,ZMB,45.7
+Serbia,SRB,45.1
+Denmark,DNK,44.8
+Czechoslovakia,CZE,44.8
+Burma,MMR,44.3
+Senegal,SEN,44.0
+Suriname,SUR,44.0
+Romania,ROU,43.9
+Fiji,FJI,43.9
+Saint Vincent and the Grenadines,VCT,43.8
+South Africa,ZAF,43.8
+Uzbekistan,UZB,43.6
+Trinidad and Tobago,TTO,43.6
+Cameroon,CMR,43.4
+Belgium,BEL,43.4
+Uruguay,URY,43.2
+Poland,POL,43.1
+United States,USA,43.0
+Uganda,UGA,42.6
+Costa Rica,CRI,42.5
+Algeria,DZA,42.4
+North Korea,PRK,42.4
+Solomon Islands,SLB,42.4
+Kuwait,KWT,42.0
+Tunisia,TUN,41.8
+Austria,AUT,41.5
+Qatar,QAT,41.5
+Zimbabwe,ZWE,41.4
+Haiti,HTI,41.4
+Guadeloupe,GLP,41.1
+Slovakia,SVK,40.9
+Honduras,HND,40.8
+Vietnam,VNM,40.6
+New Zealand,NZL,40.3
+Bosnia and Herzegovina,BIH,40.0
+United Arab Emirates,ARE,39.9
+Mali,MLI,39.7
+Saint Kitts and Nevis,KNA,39.7
+Tajikistan,TJK,39.6
+DR Congo,COD,39.4
+Jamaica,JAM,39.2
+Dominican Republic,DOM,38.9
+Colombia,COL,38.9
+Republic of Ireland,IRL,38.9
+Turkey,TUR,38.8
+Madagascar,MDG,38.3
+Chile,CHL,38.2
+Turkmenistan,TKM,37.7
+Kenya,KEN,37.7
+Indonesia,IDN,37.6
+Bulgaria,BGR,37.2
+Syria,SYR,37.1
+Oman,OMN,37.1
+Thailand,THA,37.1
+Greece,GRC,36.9
+Curaçao,CUW,36.7
+Libya,LBY,36.5
+Ethiopia,ETH,36.5
+Norway,NOR,36.4
+Guinea,GIN,36.3
+Grenada,GRD,35.8
+Paraguay,PRY,35.6
+Bermuda,BMU,35.5
+Canada,CAN,35.2
+Malawi,MWI,35.2
+Switzerland,CHE,35.1
+Jordan,JOR,34.9
+Cape Verde,CPV,34.9
+Malaysia,MYS,34.9
+Guatemala,GTM,34.8
+Gabon,GAB,34.8
+Israel,ISR,34.8
+India,IND,34.7
+Slovenia,SVN,34.4
+Congo,COG,34.4
+Angola,AGO,34.4
+Cuba,CUB,34.1
+Rwanda,RWA,33.6
+Bahrain,BHR,33.5
+Sudan,SDN,33.5
+Barbados,BRB,33.5
+Réunion,REU,33.3
+El Salvador,SLV,33.3
+Saint Lucia,LCA,33.2
+Greenland,GRL,32.9
+Montenegro,MNE,32.7
+Hong Kong,HKG,32.6
+Mozambique,MOZ,32.6
+Peru,PER,32.3
+Vanuatu,VUT,32.2
+Burkina Faso,BFA,31.7
+Antigua and Barbuda,ATG,31.6
+Iceland,ISL,31.5
+Samoa,WSM,31.4
+Burundi,BDI,30.9
+Panama,PAN,30.8
+Sierra Leone,SLE,30.8
+Togo,TGO,30.8
+Guyana,GUY,30.7
+Gibraltar,GIB,30.6
+Belarus,BLR,30.4
+Georgia,GEO,30.3
+Singapore,SGP,30.2
+Papua New Guinea,PNG,30.2
+Kyrgyzstan,KGZ,30.1
+Ecuador,ECU,29.7
+Maldives,MDV,29.6
+French Guiana,GUF,29.3
+North Macedonia,MKD,29.1
+Latvia,LVA,28.8
+Philippines,PHL,28.0
+Liberia,LBR,27.5
+Tanzania,TZA,27.5
+Lebanon,LBN,27.5
+Guinea-Bissau,GNB,27.2
+Mauritius,MUS,27.2
+Lithuania,LTU,27.0
+Afghanistan,AFG,27.0
+Palestine,PSE,26.9
+Botswana,BWA,26.9
+Namibia,NAM,26.6
+Mongolia,MNG,26.0
+Finland,FIN,25.5
+Chinese Taipei,TWN,25.5
+Estonia,EST,25.5
+Albania,ALB,25.3
+Tonga,TON,25.0
+Armenia,ARM,24.3
+Kazakhstan,KAZ,24.2
+Venezuela,VEN,24.1
+Bangladesh,BGD,24.0
+Dominica,DMA,23.6
+Gambia,GMB,23.5
+Guam,GUM,23.2
+Niger,NER,22.9
+Belize,BLZ,22.8
+Benin,BEN,22.7
+Equatorial Guinea,GNQ,22.3
+Bolivia,BOL,22.1
+Chad,TCD,21.7
+Nepal,NPL,21.3
+Cambodia,KHM,21.3
+Cayman Islands,CYM,20.9
+Central African Republic,CAF,20.8
+Pakistan,PAK,20.0
+Eswatini,SWZ,20.0
+Yemen,YEM,19.9
+Sri Lanka,LKA,19.9
+Moldova,MDA,19.2
+Azerbaijan,AZE,19.2
+Cyprus,CYP,19.1
+Laos,LAO,19.0
+Puerto Rico,PRI,18.8
+Lesotho,LSO,18.1
+Faroe Islands,FRO,17.9
+British Virgin Islands,VGB,17.6
+Aruba,ABW,17.5
+Mauritania,MRT,17.5
+Nicaragua,NIC,17.4
+Macau,MAC,16.4
+Eritrea,ERI,15.3
+Comoros,COM,15.0
+Brunei,BRN,13.7
+U.S. Virgin Islands,VIR,13.0
+Malta,MLT,11.8
+Seychelles,SYC,11.5
+Bhutan,BTN,9.9
+Somalia,SOM,9.3
+Luxembourg,LUX,8.5
+East Timor,TLS,7.8
+Liechtenstein,LIE,7.6
+Anguilla,AIA,4.9
+Djibouti,DJI,4.5
+Andorra,AND,3.7
+San Marino,SMR,0.6
+United Kingdom,GBR,42.7

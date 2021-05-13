@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- metas -->
+    <meta charset="utf-8">
+    <meta name="author" content="themepaa">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Krozo - Portfolio Template">
+    <meta name="description" content="Krozo - Portfolio Template">
+    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
+    <!--Feel free to add more CSS files as needed-->
+    <script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <!-- title -->
+    <title>Adding neural networks to the flight prediction model</title>
+    <!-- Favicon -->
+    <!-- plugin CSS -->
+    <!-- theme css -->
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<!-- Body Start -->
+
+<body data-spy="scroll" data-target="#navbar-collapse-toggle" data-offset="70">
+    <!-- page loading -->
+    <div id="loading">
+        <div class="load-circle"><span class="one"></span></div>
+    </div>
+    <!-- End -->
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar header-nav header-white header-transparent navbar-expand-lg">
+            <div class="container">
+                <!-- Brand -->
+                <a class="navbar-brand" href="/index.html">Joshua Neronha<span></span></a>
+                <!-- / -->
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-toggle" aria-controls="navbar-collapse-toggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <!-- / -->
+                <!-- Top Menu -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbar-collapse-toggle">
+                    <ul class="navbar-nav ml-auto">
+                        <li><a class="nav-link" href="/index.html#home"><span>Home</span></a></li>
+                        <li><a class="nav-link" href="/index.html#about"><span>About Me</span></a></li>
+                        <li><a class="nav-link" href="/index.html#work"><span>Projects</span></a></li>
+                        <li><a class="nav-link" href="/blog.html"><span>Blog</span></a></li>
+                        <li><a class="nav-link" href="/index.html#contactus"><span>Contact</span></a></li>
+                    </ul>
+                </div>
+                <!-- / -->
+            </div><!-- Container -->
+        </nav> <!-- Navbar -->
+    </header>
+    <!-- End Header -->
+    <main id="blog">
+        <!-- Home Banner -->
+        <section class="page-title bg-gray-1" style="background-image: url(/static/img/bg-1.jpeg);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 white-color text-center">
+                        <h1>Blog</h1>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Home Banner -->
+        <!-- Blog List -->
+        <div class="blog-listing">
+            <div class="container">
+                <div class="row align-items-start">
+                    <div class="col-lg-12 my-3">
+                        <article class="article">
+                            <!-- <div class="article-img">
+                                <img src="/static/img/bg-1.jpeg" title="" alt="">
+                            </div> -->
+                            <div class="article-title">
+                                <h2>Adding neural networks to the flight prediction model</h2>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <label>Joshua Neronha</label>
+                                        <span>12 MAY 2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <p>If you saw my <a href = "https://joshuaneronha.com/blog_posts/air_model.html">previous post</a>, you may have noticed that
+                                I chose to use a regression to build the model for a flight prediction model. But regressions, of course, are inherently limited by
+                                predicting future events by fitting past events to some sort of standard function. Artificial neural networks are very interesting because it has
+                                been shown that (at least theoretically) they can fit any continuous function, so I wanted to give this method a try in my model!
+                                </p>
+                                <p>I've updated the visualization from my last post to include two methods of prediction for any route: the same regression-based model
+                                    from the last post in addition to a neural network based prediction. I'll briefly discuss my methodology and compare the two methods
+                                    but check out the visualization below and new model first -- it works just like the previous map, but this time will show the two predictions side-by-side.
+                                </p>
+                                <div id="map" style="overflow-x:scroll"></div>
+                                <p>
+                                    Before comparing the results, I'll quickly discuss my methodology (feel free to take a look at the <a href = "https://github.com/joshuaneronha/nonstop-flight-model/blob/main/Model.ipynb">Jupyter notebook</a> here).
+                                    I used the same variables as the regression, and similarly limited the model to routes with less than 35,000 passengers in the quarter. I scaled the data using a standard
+                                    max-min algorithm and split the data into a training and testing set. To actually build the artificial neural network, I used TensorFlow and Keras in Python. I tried a variety of different models
+                                    with different sizes, activation functions, and optimizers before landing on the model shown below based on optimal and reproducible results. As you can see in the table below, it 
+                                    has four hidden, dense layers, each with 16 or 64 neurons.
+                                </p>
+                                <pre>
+                                    _________________________________________________________________
+                                    Layer (type)                 Output Shape              Param #   
+                                    =================================================================
+                                    dense_1011 (Dense)           (None, 16)                160       
+                                    _________________________________________________________________
+                                    dense_1012 (Dense)           (None, 16)                272       
+                                    _________________________________________________________________
+                                    dense_1013 (Dense)           (None, 64)                1088      
+                                    _________________________________________________________________
+                                    dense_1014 (Dense)           (None, 16)                1040      
+                                    _________________________________________________________________
+                                    dense_1015 (Dense)           (None, 1)                 17        
+                                    =================================================================
+                                    Total params: 2,577
+                                    Trainable params: 2,577
+                                    Non-trainable params: 0
+                                    _________________________________________________________________
+                                    None
+                                    </pre>
+                                <p>
+                                    The neural network converged at a result within about 75 epochs and had a testing mean square error (MSE) of 4454136. I then used the same
+                                    data to re-run the regression, which had a testing MSE of 4807240, indicating an approximately 10% improvement using the neural network model.
+                                    Of course, a lower MSE doesn't necesarily mean better results -- it's all about whether they make sense in context, so we'll compare results for
+                                    ten randomly chosen routes and see how each model does as a small sample. As a note, the neural network will never give an answer lower than 35
+                                    because that seemed to be a global minimum for this neural network (I'm still thinking about why), which is noted in the model.
+                                </p>
+                                <p>
+                                    To look at results in context, I chose two airports using a random number generator ten times and then considered the results, shown below.
+                                </p>
+                                <table style="width:100%" class="center" border="1">
+                                    <colgroup>
+                                        <col span="1" style="width: 15%;">
+                                        <col span="1" style="width: 15%;">
+                                        <col span="1" style="width: 7.5%;">
+                                        <col span="1" style="width: 7.5%;">
+                                        <col span="1" style="width: 7.5%;">
+                                        <col span="1" style="width: 7.5%;">
+                                        <col span="1" style="width: 40%;">
+                                     </colgroup>
+                                    <tr>
+                                      <th>Origin</th>
+                                      <th>Destination</th> 
+                                      <th>Nonstop</th>
+                                      <th>Total</th>
+                                      <th>Regression</th>
+                                      <th>Neural Network</th>
+                                      <th>Comments</th>
+                                    </tr>
+                                    <tr>
+                                        <td>RDU (Raleigh-Durham, NC)</td>
+                                        <td>MDT (Harrisburg, PA)</td> 
+                                        <td>0</td>
+                                        <td>15</td>
+                                        <td>56</td>
+                                        <td>85</td>
+                                        <td>This seems like a lot of passengers given that the total PDEW is only 15. The neural network in particular thinks seats would fill simply because the route exists, more so than the regression.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PIT (Pittsburg, PA)</td>
+                                        <td>LAS (Las Vegas, NV)</td> 
+                                        <td>293</td>
+                                        <td>405</td>
+                                        <td>230</td>
+                                        <td>203</td>
+                                        <td>This route actually exists! The regression is slightly more accurate than the neural network here.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PBI (Palm Beach, FL)</td>
+                                        <td>GRK (Killeen, TX)</td> 
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>11</td>
+                                        <td>67</td>
+                                        <td>As before, the regression assumes that this route connecting two small airports will have very few passengers, whereas the neural network thinks it will fill somewhat simply because it exists. While hard to predict what actually might happen if launched, it's hard to believe only 11 people getting on board a plane every day for a flight, but 67 might be too high.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD (Chicago, IL)</td>
+                                        <td>FAR (Fargo, ND)</td> 
+                                        <td>51</td>
+                                        <td>57</td>
+                                        <td>155</td>
+                                        <td>149</td>
+                                        <td>Both the regression and neural networks overestimate this route by the same magnitude, perhaps because of ORD's sheer size.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RNO (Reno, NV)</td>
+                                        <td>FAY (Fayetteville, NC)</td> 
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>48</td>
+                                        <td>The neural network predicts about 50 passengers whereas the regression predicts only 5 PDEW -- as before, the distinction between the models appears to be whether the sheer existence of the route will increase demand</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DFW (Dallas, TX)</td>
+                                        <td>SEA (Seattle, WA)</td> 
+                                        <td>953</td>
+                                        <td>1034</td>
+                                        <td>852</td>
+                                        <td>1011</td>
+                                        <td>Another existing route, tthe neural network gets slightly closer to the actual nonstop PDEW.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LSE (La Crosse, WI)</td>
+                                        <td>GTR (Columbus, MS)</td> 
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>2</td>
+                                        <td>&#60;35</td>
+                                        <td>Both models predict extremely low traffic on this pretty obscure route.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ELP (El Paso, TX)</td>
+                                        <td>FCA (Kalispell, MT)</td> 
+                                        <td>0</td>
+                                        <td>2</td>
+                                        <td>21</td>
+                                        <td>68</td>
+                                        <td>As before, we see higher estimates with the neural network than for the regression despite low observed traffic.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DTW (Detroit, MI)</td>
+                                        <td>STX (St. Croix, USVI)</td> 
+                                        <td>0</td>
+                                        <td>5</td>
+                                        <td>40</td>
+                                        <td>114</td>
+                                        <td>We see similar results as before.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OKC (Oklahoma City, OK)</td>
+                                        <td>MSP (Minneapolis, MN)</td> 
+                                        <td>55</td>
+                                        <td>72</td>
+                                        <td>111</td>
+                                        <td>112</td>
+                                        <td>We see almost exactly the same results (both overestimates) from the two models.</td>
+                                    </tr>
+
+                                  </table>
+                                  <br>
+                                  <p>There are two broad conclusions we can draw from this comparison:</p>
+                                  <ol>
+                                      <li>The two models return relatively similar results for routes that are likely to be fairly well-trafficked.</li>
+                                      <li>For lower demand routes, the neural network consistently expects signifigantly more passengers than the regression.
+                                          This likely results from how the two different models operate. The neural network seems to assume that should a route be launched,
+                                          we will see increased demand simply because the route exists despite having small airports on the route, compared to the regression
+                                          model, which would simply predict near-zero passengers per day based on the fact that the airports have very small traffic.
+                                      </li>
+                                    </ol>
+                                    <p>As a result, the neural network may be more useful in situations (particularly for smaller routes) where we
+                                        expect signifigant demand to be created because of the route's existence, for example drawing passengers away from
+                                        other airports (a new route from Providence may steal passengers away from Boston or Hartford, for example). Additionally,
+                                        the neural network model has a lower overall MSE, which indicates a slightly better model as well. Both models, of course, are
+                                        useful in considering potential new routes and have different strengths and weaknesses, and I look forward to further exploring
+                                        the benefits of each.
+                                    </p>
+                                    <p>As always, let me know if you have any thoughts or questions!</p>
+                              
+
+                        </article>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Blog List -->
+    </main>
+    <!-- Footer -->
+    <footer class="footer white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 my-2">
+                    <div class="nav justify-content-center justify-content-md-start">
+                        <a href="https://github.com/joshuaneronha"><i class="ti-github"></i></a>
+                        <a href="https://www.linkedin.com/in/joshuaneronha/"><i class="ti-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 my-2 text-center text-md-right">
+                    <p>Copyright 2021 Joshua Neronha. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <script src="/static/js/jquery-3.5.1.min.js"></script>
+    <script src="/static/plugin/appear/jquery.appear.js"></script>
+    <script src="/static/plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script type="text/javascript" src="/resources/air_predict_2.js"></script>
+</body>
+<!-- Body End -->
+
+</html>
