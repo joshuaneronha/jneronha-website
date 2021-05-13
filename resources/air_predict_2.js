@@ -158,9 +158,9 @@ let info_box = svg_1.append("rect")
     .attr('fill','transparent')
     .attr('stroke-width', '3');
 
-d3.json("/resources/us-states.json", function(data){
-d3.csv("/resources/airports_withloc.csv", function(airports) {
-d3.csv("/resources/model_output_new_35k.csv", function(model) {
+d3.json("/jneronha-website/resources/us-states.json", function(data){
+d3.csv("/jneronha-website/resources/airports_withloc.csv", function(airports) {
+d3.csv("/jneronha-website/resources/model_output_new_35k.csv", function(model) {
 
     // Filter data
     // data.features = data.features.filter( function(d){return d.properties.name=="France"} )
